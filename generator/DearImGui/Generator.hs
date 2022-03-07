@@ -74,9 +74,15 @@ headers = $( do
   basicHeaders <- TH.runIO do
     headersPath  <- canonicalizePath ( takeDirectory currentPath <> "/../../imgui/imgui.h" )
     headersSource <- Text.readFile headersPath
-    tokens <- case tokenise headersSource of
+    tokensImGui <- case tokenise headersSource of
       Left  err  -> error ( "Couldn't tokenise Dear ImGui headers:\n\n" <> show err )
       Right toks -> pure toks
+    headersPath  <- canonicalizePath ( takeDirectory currentPath <> "/../../implot/implot.h" )
+    headersSource <- Text.readFile headersPath
+    tokensImPlot <- case tokenise headersSource of
+      Left  err  -> error ( "Couldn't tokenise Dear ImPlot headers:\n\n" <> show err )
+      Right toks -> pure toks
+    let tokens = tokensImGui<>tokensImPlot
     case Megaparsec.parse Parser.headers "" tokens of
       Left  err -> do
         let

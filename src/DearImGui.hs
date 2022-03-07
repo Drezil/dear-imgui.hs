@@ -294,6 +294,9 @@ module DearImGui
   , Raw.getForegroundDrawList
   , Raw.imCol32
 
+    -- * Plotting
+  , module DearImGui.Plot
+
     -- * Types
   , module DearImGui.Enums
   , module DearImGui.Structs
@@ -315,6 +318,7 @@ import System.IO
 -- dear-imgui
 import DearImGui.Enums
 import DearImGui.Structs
+import DearImGui.Plot
 import qualified DearImGui.Raw as Raw
 import qualified DearImGui.Raw.Font as Raw.Font
 import qualified DearImGui.Raw.ListClipper as Raw.ListClipper

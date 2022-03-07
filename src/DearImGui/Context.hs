@@ -43,3 +43,11 @@ imguiContext = mempty
       , ( TypeName "ImGuiListClipper", [t| ImGuiListClipper |] )
       ]
   }
+
+implotContext :: Context
+implotContext = mempty
+  { ctxTypesTable =
+    Map.fromList
+      [ ( TypeName "ImPlotContext", [t| ImPlotContext |] )
+      ]
+  }

@@ -22,7 +22,9 @@ extra-source-files:
   imgui/backends/*.h,
   imgui/backends/*.mm,
   imgui/imconfig.h,
-  imgui/LICENSE.txt
+  imgui/LICENSE.txt,
+  implot/*.h,
+  implot/LICENSE
 
 common exe-flags
   if flag(debug)
@@ -140,6 +142,7 @@ library
   exposed-modules:
     DearImGui
     DearImGui.FontAtlas
+    DearImGui.Plot
     DearImGui.Raw
     DearImGui.Raw.DrawList
     DearImGui.Raw.Font
@@ -147,6 +150,7 @@ library
     DearImGui.Raw.Font.GlyphRanges
     DearImGui.Raw.ListClipper
     DearImGui.Raw.IO
+    DearImGui.Raw.Plot
   other-modules:
     DearImGui.Context
     DearImGui.Enums
@@ -158,10 +162,14 @@ library
     imgui/imgui_draw.cpp
     imgui/imgui_tables.cpp
     imgui/imgui_widgets.cpp
+    implot/implot.cpp
+    implot/implot_demo.cpp
+    implot/implot_items.cpp
   extra-libraries:
     stdc++
   include-dirs:
     imgui
+    implot
   build-depends:
       dear-imgui-generator
     , containers
