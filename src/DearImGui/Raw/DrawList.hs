@@ -412,8 +412,8 @@ addText_ (DrawList drawList) pos col text_begin text_end = liftIO do
     }
   |]
 
-addText :: MonadIO m => DrawList -> Ptr ImFont -> CFloat -> Ptr ImVec2 -> ImU32 -> CString -> CString -> CFloat -> Ptr ImVec4 -> m ()
-addText (DrawList drawList) fontPtr font_size pos col text_begin text_end wrap_width cpu_fine_clip_rect = liftIO do
+addText :: MonadIO m => DrawList -> Ptr ImFont -> CFloat -> Ptr ImVec2 -> ImU32 -> CString -> CString -> CFloat -> CFloat -> Ptr ImVec4 -> m ()
+addText (DrawList drawList) fontPtr font_size pos col text_begin text_end wrap_width text_align cpu_fine_clip_rect = liftIO do
   [C.block|
     void {
       $(ImDrawList* drawList)->AddText(
@@ -424,6 +424,7 @@ addText (DrawList drawList) fontPtr font_size pos col text_begin text_end wrap_w
         $(char* text_begin),
         $(char* text_end),
         $(float wrap_width),
+        $(float text_align),
         $(ImVec4* cpu_fine_clip_rect)
       );
     }
