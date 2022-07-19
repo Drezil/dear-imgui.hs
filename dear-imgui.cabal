@@ -179,10 +179,18 @@ library
     imgui/imgui_draw.cpp
     imgui/imgui_tables.cpp
     imgui/imgui_widgets.cpp
+  install-includes:
+    imgui.h
+    imgui_internal.h
+    imstb_rectpack.h
+    imstb_textedit.h
+    imstb_truetype.h
   if impl(ghc >= 9.4)
     build-depends: system-cxx-std-lib
   else
     extra-libraries: stdc++
+  extra-bundled-libraries:
+    HSdear-imgui-2.0.0-inplace
   include-dirs:
     imgui
   build-depends:
